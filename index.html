@@ -4,28 +4,143 @@ layout: default
 
 <div class="row">
 
-    <div class="span6">
-        <h3>House of Representatives - Roll Call votes</h3>
+    <div class="span5">
+        <h2>Bills in Congress</h2>
+        <h3>Government Printing Office</h3>
         <p>
-            The Clerk of the House of Representatives publishes roll call votes in XML, within minutes of the vote being taken. The latest votes are listed by year (e.g. <a href="http://clerk.house.gov/evs/2012/index.asp">2012</a>) on HTML pages, which link to XML files for individual votes (e.g. <a href="http://clerk.house.gov/evs/2012/roll126.xml">2012 Roll #126</a>).
+            The Government Printing Office (GPO) publishes a <a href="http://www.gpo.gov/fdsys/browse/collection.action?collectionCode=BILLS">collection of data</a> pertaining to bills passing through Congress. For each bill, GPO publishes <a href="http://www.gpo.gov/fdsys/search/pagedetails.action?browsePath=112%2Fhr%2F%5B2100%3B2199%5D&granuleId=&packageId=BILLS-112hr2107ih&fromBrowse=true">several data files</a> containing the full text of legislation in plaintext, XML, and PDF format. GPO also publishes <a href="http://www.gpo.gov/fdsys/pkg/BILLS-112hr2107ih/mods.xml">"MODS"</a> metadata accompanying each bill, and <a href="http://www.gpo.gov/smap/fdsys/sitemap_2012/2012_BILLS_sitemap.xml">crawl-able sitemaps</a> that can be used to find each piece of content in the order it has been changed.
         </p>
 
         <p>
+            These files contain some light metadata related to versioning of bills, but lack substantial information about a bill's history, description, or status -- this is what the Library of Congress' <a href="http://thomas.gov">THOMAS</a> system specializes in. The best, though unofficial, source for obtaining that information in bulk is <a href="http://www.govtrack.us/developers/data">GovTrack.us</a>.
+        </p>
+
+        <p>
+            Here, you can download zip files per Congress for the plaintext and XML versions of each bill, along with its MODS metadata, going back to the 103rd Congress (1993-1994).
+        </p>
+
+        <h4>Filename Pattern</h4>
+
+        <dl class="dl-horizontal">
+            <dt>Bill (plaintext)</dt>
+            <dd>[bill_version_id].htm</dd>
+            <dt>Bill (XML)</dt>
+            <dd>[bill_version_id].xml</dd>
+            <dt>MODS metadata</dt>
+            <dd>[bill_version_id].mods.xml</dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>bill_version_id</dt>
+            <dd>[type][number]-[congress]-[version_code]</dd>
+            <dt>type</dt>
+            <dd>One of: [hr, hres, hjres, hcres, s, sres, sjres, scres]</dd>
+            <dt>number</dt>
+            <dd>Bill number.</dd>
+            <dt>congress</dt>
+            <dd>Number of Congress. (e.g. 111, 112)</dd>
+            <dt>version_code</dt>
+            <dd><a href="http://www.gpo.gov/help/about_congressional_bills.htm">GPO-assigned abbreviation</a> for version type.</dd>
+        </dl>
+
+        <h4>Bulk Downloads by Session</h4>
+        <p class="downloads">
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/111.zip">111th Congress</a>
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/110.zip">110</a>
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/109.zip">109</a>
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/108.zip">108</a>
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/107.zip">107</a>
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/106.zip">106</a>
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/105.zip">105</a>
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/104.zip">104</a>
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/103.zip">103</a>
+        </p>
+        <p class="downloads">
+            <a href="http://bulk.sunlightfoundation.com/data/gpo/BILLS/112.zip">112th Congress</a> (Current session, updated nightly)
+        </p>
+    </div>
+
+    <div class="span5 offset1">
+        <h2>Votes in Congress</h2>
+        <h3>House of Representatives</h3>
+        <p>
+            The Clerk of the House of Representatives publishes roll call votes in XML, within minutes of the vote being taken. The latest votes are listed <a href="http://clerk.house.gov/evs/2012/index.asp">by year</a> on HTML pages, which link to XML files for <a href="http://clerk.house.gov/evs/2012/roll126.xml">individual votes</a>.
+        </p>
+
+        <!-- <p>
             We gather this data to serve the <a href="http://services.sunlightlabs.com/docs/Real_Time_Congress_API/">Real Time Congress API</a>, which in turn serves our products and <a href="https://play.google.com/store/apps/details?id=com.sunlightlabs.android.congress">mobile apps</a>.
-        </p>
+        </p> -->
 
         <p>
-            Here, you can download zip files containing all roll call votes for a given year, back to 1990.
+            Here, you can download zip files containing all House roll call votes for a given year, back to 1990.
         </p>
 
         <h4>Bulk Downloads by Year</h4>
-        <p class="download_links">
+        <p class="downloads">
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1990.zip">1990</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1991.zip">1991</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1992.zip">1992</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1993.zip">1993</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1994.zip">1994</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1995.zip">1995</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1996.zip">1996</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1997.zip">1997</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1998.zip">1998</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/1999.zip">1999</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2000.zip">2000</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2001.zip">2001</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2002.zip">2002</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2003.zip">2003</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2004.zip">2004</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2005.zip">2005</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2006.zip">2006</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2007.zip">2007</a>
+            <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2008.zip">2008</a>
             <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2009.zip">2009</a>
             <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2010.zip">2010</a>
             <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2011.zip">2011</a>
         </p>
-        <p>
+        <p class="downloads">
             <a href="http://bulk.sunlightfoundation.com/data/house/rolls/2012.zip">2012</a> (Current year, updated nightly)
+        </p>
+
+        <h3>Senate</h3>
+        <p>
+            The Senate publishes roll call votes in XML, within an hour of the vote being taken. The latest votes are <a href="http://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_112_2.htm">organized by Congress and session</a> in HTML and <a href="http://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_112_2.xml">XML</a>. These lists link to <a href="http://www.senate.gov/legislative/LIS/roll_call_lists/roll_call_vote_cfm.cfm?congress=112&session=2&vote=00056">individual votes</a>, published in HTML and <a href="http://www.senate.gov/legislative/LIS/roll_call_votes/vote1122/vote_112_2_00056.xml">XML</a>.
+        </p>
+
+        <p>
+            Here, you can download zip files containing all Senate roll call votes for a given year, back to 1989.
+        </p>
+
+        <h4>Bulk Downloads by Year</h4>
+        <p class="downloads">
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1989.zip">1989</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1990.zip">1990</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1991.zip">1991</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1992.zip">1992</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1993.zip">1993</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1994.zip">1994</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1995.zip">1995</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1996.zip">1996</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1997.zip">1997</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1998.zip">1998</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/1999.zip">1999</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2000.zip">2000</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2001.zip">2001</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2002.zip">2002</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2003.zip">2003</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2004.zip">2004</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2005.zip">2005</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2006.zip">2006</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2007.zip">2007</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2008.zip">2008</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2009.zip">2009</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2010.zip">2010</a>
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2011.zip">2011</a>
+        </p>
+        <p class="downloads">
+            <a href="http://bulk.sunlightfoundation.com/data/senate/rolls/2012.zip">2012</a> (Current year, updated nightly)
         </p>
 
     </div>
