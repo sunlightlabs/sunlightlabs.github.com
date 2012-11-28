@@ -27,6 +27,10 @@
         //"naggati2": "A protocol builder for Netty using Scala 2.8"
       };
 
+      function repoDescription(repo) {
+        return repoDescriptions[repo.name] || repo.description;
+      }
+
       // blacklisted repos
       var REPO_BLACKLIST = [
           'python-yammer', 'anthill', 'billy-wavebot', 'django-popular',
@@ -37,10 +41,6 @@
           'datacatalog-imp-mi', 'datacatalog-imp-portland', 'datacatalog-imp-ri-gov',
           'datacatalog-imp-system', 'datacatalog-imp-texas-gov', 'datacatalog-imp-utah',
           'datacatalog-imp-utah-old', 'datacatalog-web' ];
-
-      function repoDescription(repo) {
-        return repoDescriptions[repo.name] || repo.description;
-      }
 
       function addRecentlyUpdatedRepo(repo) {
         var $item = $("<li>");
@@ -93,7 +93,7 @@
               var new_repos = [];
               for(var i=0; i < repos.length; ++i) {
                 console.log(repos[i].name);
-                if($.inArray(repos[i].name, REPO_BLACKLIST) != -1) {
+                if($.inArray(repos[i].name, REPO_BLACKLIST) == -1) {
                    new_repos.push(repos[i]);
                 }
               }
