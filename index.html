@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>Sunlight &hearts; Open Source</title>
+    <title>Sunlight Labs' Open Source Projects</title>
     <link rel="stylesheet" type="text/css" href="assets/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/grid.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
@@ -45,9 +45,11 @@
           'ruby-tcorps', 'django-uspolitics', 'sunlight-scraps', 'polipoly',
           'django-ostracker', 'getrepresented', 'datacatalog-importer',
           'datacommons-matchbox', 'foodtrucks', 'realtimecongress-server-old',
-          'psycopg-ctypes', 'oyster', 'python-sunlightapi' ];
+          'psycopg-ctypes', 'oyster', 'python-sunlightapi', 'python-openstates',
+          'data-catalog', 'django-brainstorm', 'sunlightlabs.github.com',
+          'datacatalog-api', 'real_time_congress_iphone_html' ];
 
-      function addRecentlyUpdatedRepo(repo) {
+      function addRecentlyUpdatedRepo(repo, classname) {
         var $item = $("<li>");
 
         var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
@@ -66,7 +68,7 @@
         var $forks = $("<a>").attr("href", repo.html_url + "/network").text(repo.forks + " forks");
         $item.append($("<span>").addClass("forks").append($forks));
 
-        $item.appendTo("#recently-updated-repos");
+        $item.appendTo(classname);
       }
 
       function addRepo(repo) {
@@ -101,7 +103,6 @@
                    new_repos.push(repos[i]);
                 }
               }
-              $("#num-repos").text(repos.length);  // before we hide them
               repos = new_repos;
 
               // Convert pushed_at to Date.
@@ -139,113 +140,17 @@
               });
 
               $.each(repos.slice(0, 3), function (i, repo) {
-                addRecentlyUpdatedRepo(repo);
+                addRecentlyUpdatedRepo(repo, "#recent1");
               });
+              $.each(repos.slice(3, 6), function (i, repo) {
+                addRecentlyUpdatedRepo(repo, "#recent2");
+                });
+              $('#spinner').remove();
             });
           }
         });
       }
       addRepos();
-
-      $(function () {
-         $("#num-hidden").text(REPO_BLACKLIST.length);
-      });
-
-      $.getJSON("https://api.github.com/orgs/sunlightlabs/members?callback=?", function (result) {
-        var members = result.data;
-
-        $(function () {
-          $("#num-members").text(members.length);
-        });
-      });
-
-    /*
-      function randomItem(array) {
-        return array[Math.floor(Math.random() * array.length)];
-      }
-
-      var $flyzone;
-
-      function flyzone() {
-        if (!$flyzone) {
-          $flyzone = $("<div>").attr("id", "flyzone").prependTo(document.body);
-        }
-
-        return $flyzone;
-      }
-
-      var sizes = ["smaller", "small", "medium", "large", "fat"];
-
-      var sizeDimensions = {
-        "smaller": 50,
-        "small": 80,
-        "medium": 130,
-        "large": 200,
-        "fat": 300
-      };
-
-      function randomOpacity(threshold) {
-        var opacity = Math.random();
-
-        while (opacity < threshold) {
-          opacity = Math.random();
-        }
-
-        return opacity;
-      }
-
-      function makeLarry(sizeName, speed) {
-        var size = sizeDimensions[sizeName];
-        var top = Math.floor((flyzone().height() - size) * Math.random());
-
-        var $img = $("<img>")
-          .addClass("larry size-" + sizeName)
-          .attr("src", "assets/larry.png")
-          .attr("width", size)
-          .attr("height", size)
-          .css({
-            position: "absolute",
-            opacity: randomOpacity(0.4),
-            top: top,
-            left: -size
-          });
-
-        $img.prependTo(flyzone());
-
-        var left = flyzone().width() + size;
-
-        $img.animate({left: left}, speed, function () {
-          $img.remove();
-          makeRandomLarry();
-        });
-
-        return $img;
-      }
-
-      function makeRandomLarry() {
-        var size = randomItem(sizes);
-        var speed = Math.floor(Math.random() * 20000) + 15000;
-        return makeLarry(size, speed);
-      }
-
-      $(function () {
-        $("#logo").click(function () {
-          makeRandomLarry();
-        });
-      });
-
-      var match = (/\blarry(=(\d+))?\b/i).exec(window.location.search);
-
-      if (match) {
-        var n = parseInt(match[2]) || 20;
-
-        $(function () {
-          for (var i = 0; i < n; ++i) {
-            setTimeout(makeRandomLarry, Math.random() * n * 500);
-          }
-        });
-      }
-    */
     })(jQuery);
     </script>
   </head>
@@ -256,22 +161,15 @@
         <h1>Sunlight Labs Projects</h1>
         <p>All of our <a href="http://sunlightfoundation.com/projects/">projects</a> are Open Source.</p>
         <p>Learn more at <a href="https://sunlightlabs.com/">sunlightlabs.com</a></p>
-        <p>or follow <a href="http://twitter.com/sunlightlabs/">@sunlightlabs</a></p>
+        <p style="font-size: xx-small;">Some older/deprecated projects hidden, <a href="http://github.com/sunlightlabs/repositories">view all on GitHub</a>.
       </div>
 
       <div class="grid grid-3">
-        <div id="statistics" class="grid-1 alpha header">
-          <h1>Statistics</h1>
-          <p>
-          <a href="https://github.com/sunlightlabs/repositories"><span id="num-repos"><img src="assets/spinner.gif" /></span> public repos (<span id="num-hidden"></span> hidden)</a>
-            <br>
-            <a href="https://github.com/sunlightlabs"><span id="num-members"><img src="assets/spinner.gif" /></span> members</a>
-          </p>
-        </div>
-
-        <div id="recently-updated" class="grid-2 omega header">
-          <h1>Recently updated <a href="https://github.com/sunlightlabs/repositories">View All on GitHub</a></h1>
-          <ol id="recently-updated-repos"></ol>
+        <div id="recently-updated" class="grid grid-3 alpha omega header">
+            <h1><img id="spinner" src="assets/spinner.gif">
+                Recently updated <a href="https://github.com/sunlightlabs/repositories">View All on GitHub</a></h1>
+          <ol id="recent1" class="recently-updated-repos"></ol>
+          <ol id="recent2" class="recently-updated-repos"></ol>
         </div>
       </div>
 
