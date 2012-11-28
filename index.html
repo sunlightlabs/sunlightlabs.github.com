@@ -97,13 +97,12 @@
               // remove bad repos
               var new_repos = [];
               for(var i=0; i < repos.length; ++i) {
-                console.log(repos[i].name);
                 if($.inArray(repos[i].name, REPO_BLACKLIST) == -1) {
                    new_repos.push(repos[i]);
                 }
               }
+              $("#num-repos").text(repos.length);  // before we hide them
               repos = new_repos;
-              $("#num-repos").text(repos.length);
 
               // Convert pushed_at to Date.
               $.each(repos, function (i, repo) {
@@ -147,6 +146,10 @@
         });
       }
       addRepos();
+
+      $(function () {
+         $("#num-hidden").text(REPO_BLACKLIST.length);
+      });
 
       $.getJSON("https://api.github.com/orgs/sunlightlabs/members?callback=?", function (result) {
         var members = result.data;
@@ -260,7 +263,7 @@
         <div id="statistics" class="grid-1 alpha header">
           <h1>Statistics</h1>
           <p>
-            <a href="https://github.com/sunlightlabs/repositories"><span id="num-repos"><img src="assets/spinner.gif" /></span> public repos</a>
+          <a href="https://github.com/sunlightlabs/repositories"><span id="num-repos"><img src="assets/spinner.gif" /></span> public repos (<span id="num-hidden"></span> hidden)</a>
             <br>
             <a href="https://github.com/sunlightlabs"><span id="num-members"><img src="assets/spinner.gif" /></span> members</a>
           </p>
