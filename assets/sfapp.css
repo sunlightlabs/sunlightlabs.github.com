@@ -308,7 +308,10 @@ div a:hover {
 }
 
 .view-all-git {
-    margin-left: 0px;
+    margin-left: 16px;
+    font-family: Georgia;
+    font-style: italic;
+    font-weight: normal;
 }
 
 #recent1, #recent2 {
