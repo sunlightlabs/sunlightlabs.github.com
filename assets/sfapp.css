@@ -118,7 +118,7 @@ ul.nav li a:hover { background-color: inherit; color: #C9A706; }
  */
 
 h1, h2, h3, h4, legend { font-weight: normal; color: #635f5c; max-width: 680px;}
-h1 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 270%; line-height: 40px; margin-bottom: 30px;}
+h1 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 220%; line-height: 40px; margin-bottom: 30px;}
 h2 { margin-bottom: 30px; font-size: 260%; line-height: 38px; text-transform: uppercase;}
 h3, .h2, legend { font-family: Georgia, "Times New Roman", Times, serif; margin-bottom: 25px; font-size: 210%; line-height: 33px; text-transform: normal; }
 h4, .h3 { font-size: 170%; margin-bottom: 20px; line-height: 27px; text-transform: normal; font-family: Georgia, 'Times New Roman', Times, serif;}
@@ -135,10 +135,10 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover { color: #b9a609; }
     margin-bottom: 50px;
 }
 .sf-header a.sf-logo {
-    background: url(//dx2r1bo18ld3u.cloudfront.net/3.0/static/images/sunlight-logo.svg?c546760cedb0) top right no-repeat;
+    background: url(../img/sfapp_logo.png) top right no-repeat;
     display: block;
     float: right;
-    height: 40px;
+    height: 30px;
     text-indent: -9999px;
     width: 160px;
     margin-top: 19px;
