@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="assets/grid.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link rel="stylesheet" type="text/css" href="assets/sfapp.css">
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
     <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="assets/strftime.js"></script>
     <script type="text/javascript">
@@ -192,24 +193,41 @@
       <h1>Libraries</h1>
         <div class="lib_sort-by">
         <ul>
-          <li>Name</li>
-          <li>Stars</li>
-          <li>Forks</li>
-          <li>Language</li>
+          <li class="lib-sortby">Sort By: </li>
+          <li class="lib-name">Name</li>
+          <li class="lib-stars">Stars</li>
+          <li class="lib-forks">Forks</li>
+          <li class="lib-lang">Language</li>
         </ul>
        </div>
-    </div>  
+  </div>  
 
-    <div id="wrapper" class="grid clearfix">
+  <div id="wrapper" class="grid clearfix">
+  </div>
+
+  <div class="grid grid-3">
+    <div id="recently-updated" class="grid grid-3 alpha omega header">
+        <h1><img id="spinner" src="assets/spinner.gif">
+              Recently updated</h1>
+      <ol id="recent1" class="recently-updated-repos"></ol>
+      <ol id="recent2" class="recently-updated-repos"></ol>
+      <a href="https://github.com/sunlightlabs/repositories">View All on GitHub</a>
     </div>
-      <div class="grid grid-3">
-        <div id="recently-updated" class="grid grid-3 alpha omega header">
-            <h1><img id="spinner" src="assets/spinner.gif">
-                Recently updated <a href="https://github.com/sunlightlabs/repositories">View All on GitHub</a></h1>
-          <ol id="recent1" class="recently-updated-repos"></ol>
-          <ol id="recent2" class="recently-updated-repos"></ol>
-        </div>
+  </div>
+  </div>
+
+  <div class="sometimes-we-container">
+    <h1>Sometimes We Solve Less Important Problems</h1>
+    <div class="sometimes-we-list">
     </div>
+  </div>
+
+  <div class="projects-container">
+    <h1>Projects</h1>
+    <div class="Projects-list">
     </div>
+  </div>
+
+
   </body>
 </html>

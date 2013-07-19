@@ -138,10 +138,10 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover { color: #b9a609; }
     background: url(../img/sfapp_logo.png) top right no-repeat;
     display: block;
     float: right;
-    height: 30px;
+    height: 40px;
     text-indent: -9999px;
     width: 160px;
-    margin-top: 19px;
+    margin-top: 8px;
     background-size: contain;
 }
 
@@ -267,6 +267,37 @@ input[type=checkbox] { width: 15px; }
 .mainsf-nav a:hover { color: #c2950c; text-decoration: none;}
 .leaderboard {border: none !important;}
 
-.container {
-    width: 940px;
+div h1 {
+  font-weight: normal;
+  font-style:normal;
+  font-size: 200%;
+  color: #584E4A;
+  font-family: Georgia, serif;
+}
+
+div h1, p {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.grid-libraries-container .lib_sort-by ul li {
+    display: inline;
+    margin-left: 17px;
+}
+
+.grid-libraries-container .lib_sort-by ul {
+    margin: 0 0 0 0;
+}
+
+.lib_sort-by {
+    padding-left: -10px;
+}
+
+.sometimes-we-container {
+  display:inline;
+  float: right;
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 290px;
 }
