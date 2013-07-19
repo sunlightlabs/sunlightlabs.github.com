@@ -261,20 +261,23 @@ input[type=checkbox] { width: 15px; }
 }
 
 .clearfix-nav i { margin-top: 2px; padding-right: 5px;}
-.mainsf-nav { float: left; font-family: sans-serif; font-size: 120%; margin-top: -40px; margin-right:0; margin-left:0px;}
+.mainsf-nav { float: left; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px;; margin-top: -40px; margin-right:0; margin-left:0px;}
 .mainsf-nav li { border-left: 1px solid #a1bfb5; margin-right: 10px; padding-left: 10px; float: right; }
 .mainsf-nav .first { border: none; }
 .mainsf-nav a:link, .listNav a:active, .listNav a:visited { color: #76716E; padding-bottom: 2px;}
 .mainsf-nav a:hover { color: #c2950c; text-decoration: none;}
 .leaderboard {border: none !important; padding-left:0px !important;}
 
-div h1 {
+
+div.title-projects h1 {
   font-weight: normal;
   font-style:normal;
   font-size: 200%;
   color: #584E4A;
-  font-family: Georgia, serif;
+  font-family: "prenton-condensed","Helvetica Neue","Helvetica","Arial",sans-serif;
+  }
 }
+
 
 div a:link, a:visited {
     color: #78bcc0;
@@ -324,9 +327,7 @@ div a:hover {
     margin-right:10px;
 }
 
-.title-projects h1 {
-    font-family: Arial;
-}
+
 
 .title-projects h4 {
     font-family: Georgia, serif;
@@ -345,4 +346,13 @@ div a:hover {
 
 .title-projects {
     width: 100%;
+}
+
+div.header h1, div.grid-libraries-container h1, div.sometimes-we-container h1, div.projects-container h1 {
+  font-weight: normal;
+  font-style:normal;
+  font-size: 200%;
+  color: #584E4A;
+  font-family: Georgia;
+  }
 }
