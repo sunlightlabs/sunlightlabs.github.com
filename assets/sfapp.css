@@ -117,7 +117,7 @@ ul.nav li a:hover { background-color: inherit; color: #C9A706; }
  * wrapper-specific styles
  */
 
-h1, h2, h3, h4, legend { font-weight: normal; color: #635f5c; max-width: 680px;}
+h1, h2, h3, h4, legend { font-weight: normal; color: #635f5c;}
 h1 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 220%; line-height: 40px; margin-bottom: 30px;}
 h2 { margin-bottom: 30px; font-size: 260%; line-height: 38px; text-transform: uppercase;}
 h3, .h2, legend { font-family: Georgia, "Times New Roman", Times, serif; margin-bottom: 25px; font-size: 210%; line-height: 33px; text-transform: normal; }
@@ -253,19 +253,20 @@ input[type=checkbox] { width: 15px; }
 
 .hidden { display: none; }
 
-/* Edits */
+/* July Edits */
 
 .grid-libraries-container {
-  padding-left: 30px;
+  padding-left: 0px;
+  padding-top: 45px;
 }
 
 .clearfix-nav i { margin-top: 2px; padding-right: 5px;}
-.mainsf-nav { float: left; font-family: sans-serif; font-size: 120%; margin-top: -34px;}
-.mainsf-nav li { border-left: 1px solid #a1bfb5; margin-left: 10px; padding-left: 10px; float: right; }
+.mainsf-nav { float: left; font-family: sans-serif; font-size: 120%; margin-top: -40px; margin-right:0; margin-left:0px;}
+.mainsf-nav li { border-left: 1px solid #a1bfb5; margin-right: 10px; padding-left: 10px; float: right; }
 .mainsf-nav .first { border: none; }
 .mainsf-nav a:link, .listNav a:active, .listNav a:visited { color: #76716E; padding-bottom: 2px;}
 .mainsf-nav a:hover { color: #c2950c; text-decoration: none;}
-.leaderboard {border: none !important;}
+.leaderboard {border: none !important; padding-left:0px !important;}
 
 div h1 {
   font-weight: normal;
@@ -275,14 +276,17 @@ div h1 {
   font-family: Georgia, serif;
 }
 
-div h1, p {
-  margin-left: 15px;
-  margin-right: 15px;
+div a:link, a:visited {
+    color: #78bcc0;
+    text-decoration: underline;
+}
+
+div a:hover {
+    color: #c2950c;
 }
 
 .grid-libraries-container .lib_sort-by ul li {
     display: inline;
-    margin-left: 17px;
 }
 
 .grid-libraries-container .lib_sort-by ul {
@@ -297,7 +301,45 @@ div h1, p {
   display:inline;
   float: right;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
   width: 290px;
+  margin-top: 240px;
+}
+
+.view-all-git {
+    margin-left: 0px;
+}
+
+#recent1, #recent2 {
+    margin-left: 17px;
+}
+
+.projects-container {
+    width: 290px;
+    margin-top: 500px;
+    margin-right:10px;
+}
+
+.title-projects h1 {
+    font-family: Arial;
+}
+
+.title-projects h4 {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+    max-width: 940px;
+    color: #949494;
+}
+
+.title-projects h1, p {
+    margin-left: 0;
+    margin-right: 0;
+    height: 30px;
+}
+
+.title-projects {
+    width: 100%;
 }
