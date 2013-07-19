@@ -27,7 +27,7 @@
 }
 
 .grid .grid-3 {
-  width: 700px;
+  width: 282px;
 }
 
 .grid .grid-4 {
@@ -43,7 +43,6 @@
 .clearfix:before,
 .clearfix:after {
   content: "";
-  display: table;
 }
 
 .clearfix:after {
