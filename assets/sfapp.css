@@ -14,9 +14,15 @@ body {
 
 /*.container { padding-left: 10px; padding-right: 10px;}*/
 
-a:hover, a:active { outline: none; }
+.grid-libraries-container a {font-size: 16px; color: #c2950c}
+a:hover, a:active {outline: none; }
 a, a:active, a:visited { color: #c9a706; }
 a:hover { color: #827b78; }
+
+h4 a {color: #78bcc0 !important;}
+p a { color: #c9a706 !important;}
+
+.projects-container a {font-size: 16px; color: #c2950c;}
 
 fieldset { margin-bottom: 3em; }
 fieldset p { margin: 1em 0; }
@@ -161,9 +167,9 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover { color: #b9a609; }
 .boxCallout li { text-align: left;}
 .sideCallout { background-color: #FCFCFC; border: 1px solid #F4F4F4; padding: 10px 15px;  }
 
-.tip, time { font-family: Georgia, 'Times New Roman', Times, serif; font-style: oblique; color: #97928f; display: block; line-height: 21px; max-width: 680px;}
-.tip { margin-bottom: 20px;}
-.withTip { margin-bottom: 5px;}
+.tip, time { font-family: Georgia, 'Times New Roman', Times, serif; font-style: oblique; color: #97928f; display: block; line-height: 21px; max-width: 680px; padding-bottom: 13px;}
+.withTip { margin-bottom: 5px;
+  line-height: 20px; margin-top: 14px; float:left;} 
 .textReplace { display: block; text-indent: -9999em; }
 .inlineTip { display: inline; }
 
@@ -268,6 +274,7 @@ input[type=checkbox] { width: 15px; }
 .mainsf-nav a:hover { color: #c2950c; text-decoration: none;}
 .leaderboard {border: none !important; padding-left:0px !important;}
 
+.section { border-top: 1px dashed #D6D3D2;}
 
 div.title-projects h1 {
   font-weight: normal;
@@ -290,14 +297,24 @@ div a:hover {
 
 .grid-libraries-container .lib_sort-by ul li {
     display: inline;
+    padding-left: 0px;
+    padding-right: 25px;
+    font-weight: bold;
+}
+
+li.lib-sortby {
+  font-weight: normal !important;
+}
+
+
+.lib_sort-by {
+  padding-left: 0px;
+  padding-bottom: 15px;
+  color: #6d6d6d;
 }
 
 .grid-libraries-container .lib_sort-by ul {
     margin: 0 0 0 0;
-}
-
-.lib_sort-by {
-    padding-left: -10px;
 }
 
 .sometimes-we-container {
@@ -307,7 +324,7 @@ div a:hover {
   margin-left: 0px;
   margin-right: 0px;
   width: 290px;
-  margin-top: 240px;
+  margin-top: -356px;
 }
 
 .view-all-git {
@@ -323,11 +340,8 @@ div a:hover {
 
 .projects-container {
     width: 290px;
-    margin-top: 500px;
     margin-right:10px;
 }
-
-
 
 .title-projects h4 {
     font-family: Georgia, serif;
@@ -355,4 +369,53 @@ div.header h1, div.grid-libraries-container h1, div.sometimes-we-container h1, d
   color: #584E4A;
   font-family: Georgia;
   }
+
+.libraries-zebra {
+  width: 580px;
 }
+
+.libraries-zebra ul li {
+  margin: 0 0 0 0;
+}
+
+ul.libraries-zebra > li:nth-of-type(even) {
+  background-color: #f9f8f8;
+}
+
+
+ul.libraries-zebra {
+  margin: 0 0 0 0;
+}
+
+li {padding-left: 20px;}
+.section img {float:left; margin-top:18px; margin-left:9px;}
+.textmiddle {vertical-align: middle;}
+.withTip-left {float: left;}
+.section p {margin: 0 0 0 0; clear:both; height:21px; padding-top: 9px; font-size:12px; max-width: 445px;}
+
+.lib-name {
+  background: url(/img/drop-arrow.png) no-repeat;
+  background-position: 39px 3px;
+  color: #c2950c;
+  text-decoration: underline ;
+  margin-left: -12px;
+}
+
+.git-button {
+    margin-top: -84px;
+    float:right;
+    margin-bottom: 36px;
+    padding-right: 10px;
+}
+
+.git-star {
+  float:right; margin-bottom: 4px;
+}
+.git-fork {float:right; clear:both;}
+}
+
+h5.morepages {margin-left: 0px}
+.more-expand { margin-left:250px; margin-top: 20px;}
+.more-underline {text-decoration:underline; clear:both; margin-bottom:1px; margin-left: 9px; margin-top: -2px; font-size:13px; color: #78bcc0;}
+.morearrow { float:left; margin-left: -2px;}
+

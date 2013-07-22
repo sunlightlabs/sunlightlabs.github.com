@@ -51,5 +51,9 @@
 
 .grid-3 {
   float:right;
-  margin-top: -59px;
+  margin-top: -380px;
+}
+
+.starclear {
+  clear: left;
 }
