@@ -14,7 +14,7 @@ body {
 
 /*.container { padding-left: 10px; padding-right: 10px;}*/
 
-.grid-libraries-container a {font-size: 16px; color: #c2950c}
+.grid-left-container a {font-size: 16px; color: #c2950c}
 a:hover, a:active {outline: none; }
 a, a:active, a:visited { color: #c9a706; }
 a:hover { color: #827b78; }
@@ -126,30 +126,13 @@ ul.nav li a:hover { background-color: inherit; color: #C9A706; }
 h1, h2, h3, h4, legend { font-weight: normal; color: #635f5c;}
 h1 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 220%; line-height: 40px; margin-bottom: 30px;}
 h2 { margin-bottom: 30px; font-size: 260%; line-height: 38px; text-transform: uppercase;}
-h3, .h2, legend { font-family: Georgia, "Times New Roman", Times, serif; margin-bottom: 25px; font-size: 210%; line-height: 33px; text-transform: normal; }
-h4, .h3 { font-size: 170%; margin-bottom: 20px; line-height: 27px; text-transform: normal; font-family: Georgia, 'Times New Roman', Times, serif;}
+h3, .h2, legend { font-family: Georgia, "Times New Roman", Times, serif; margin-bottom: 25px; font-size: 194.88%; line-height: 29px; text-transform: normal; }
+h4, .h3 .sltag { font-size: 170%; margin-bottom: 20px; line-height: 27px; text-transform: normal; font-family: Georgia, 'Times New Roman', Times, serif;}
 h5, .h4 { font-weight: bold; margin-bottom: 20px; font-size: 140%; line-height: 22px; text-transform: normal;}
 h6, .h5 { font-weight: bold; font-size: 125%; margin-bottom: 15px; text-transform: capitalize;}
 
 h1 a, h1 a:active, h1 a:visited, h2 a, h2 a:active, h2 a:visited, h3 a, h3 a:active, h3 a:visited, h4 a, h4 a:active, h4 a:visited, h5 a, h5 a:active, h5 a:visited { color: #635f5c; }
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover { color: #b9a609; }
-
-.sf-header {
-    background: url(../img/sfapp_bg_header.jpg) center bottom repeat-x;
-    background-color: rgb(231, 240, 233);
-    height: 60px;
-    margin-bottom: 50px;
-}
-.sf-header a.sf-logo {
-    background: url(../img/sfapp_logo.png) top right no-repeat;
-    display: block;
-    float: right;
-    height: 40px;
-    text-indent: -9999px;
-    width: 160px;
-    margin-top: 8px;
-    background-size: contain;
-}
 
 .subnav { padding-bottom: 10px; margin-bottom: 40px; border-bottom: 1px solid #D6D3D2; width: 100%;}
 .subnav li.active { margin-top: -5px; background-color: white; border-left: 1px solid #EEEDEC; border-top: 1px solid #EEEDEC; border-right: 1px solid #EEEDEC; padding-bottom: 20px; padding-top: 15px; -moz-border-radius-bottomright: 0px; -webkit-border-bottom-right-radius: 0px; -moz-border-radius-bottomleft: 0px; -webkit-border-bottom-left-radius: 0px;}
@@ -172,6 +155,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover { color: #b9a609; }
   line-height: 20px; margin-top: 14px; float:left;} 
 .textReplace { display: block; text-indent: -9999em; }
 .inlineTip { display: inline; }
+.datacommtip { font-family: Georgia, 'Times New Roman', Times, serif; font-style: oblique; color: #97928f; display: block; line-height: 21px; max-width: 680px; padding-bottom: 13px; padding-top:20px;}
 
 .pushInward { margin-left: 25px;}
 
@@ -261,10 +245,26 @@ input[type=checkbox] { width: 15px; }
 
 /* July Edits */
 
-.grid-libraries-container {
-  padding-left: 0px;
-  padding-top: 45px;
+/* Header for SL logo */
+
+.sf-header {
+    background: url(../img/sfapp_bg_header.jpg) center bottom repeat-x;
+    background-color: rgb(231, 240, 233);
+    height: 60px;
+    margin-bottom: 50px;
 }
+.sf-header a.sf-logo {
+    background: url(../img/sfapp_logo.png) top right no-repeat;
+    display: block;
+    float: right;
+    height: 40px;
+    text-indent: -9999px;
+    width: 160px;
+    margin-top: 8px;
+    background-size: contain;
+}
+
+/* Top menu overview */
 
 .clearfix-nav i { margin-top: 2px; padding-right: 5px;}
 .mainsf-nav { float: left; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px;; margin-top: -40px; margin-right:0; margin-left:0px;}
@@ -274,16 +274,38 @@ input[type=checkbox] { width: 15px; }
 .mainsf-nav a:hover { color: #c2950c; text-decoration: none;}
 .leaderboard {border: none !important; padding-left:0px !important;}
 
-.section { border-top: 1px dashed #D6D3D2;}
 
-div.title-projects h1 {
-  font-weight: normal;
+/* Sunlight Labs Github Projects */
+
+div.title-projects h1 { font-weight: normal;
   font-style:normal;
   font-size: 200%;
   color: #584E4A;
   font-family: "prenton-condensed","Helvetica Neue","Helvetica","Arial",sans-serif;
   }
 }
+
+.title-projects p.sltag { font-family: Georgia, serif; font-size: 14px;font-style: italic;font-weight: normal;max-width: 940px;color: #949494;
+}
+
+/* Main section */
+
+.grid-left-container {
+  padding-left: 0px;
+  padding-top: 45px;
+  width: 620px;
+  float:left;
+}
+
+.grid-right-container {
+  padding-left: 0px;
+  padding-top: 0px;
+  width: 300px;
+  float: right;
+  margin-top: -1480px;
+}
+
+.section { border-top: 1px dashed #D6D3D2;}
 
 
 div a:link, a:visited {
@@ -295,7 +317,23 @@ div a:hover {
     color: #c2950c;
 }
 
-.grid-libraries-container .lib_sort-by ul li {
+li {padding-left: 20px;}
+.section img {float:left; margin-top:18px; margin-left:9px;}
+.textmiddle {vertical-align: middle;}
+.withTip-left {float: left;}
+.section p {margin: 0 0 0 0; clear:both; height:21px; padding-top: 9px; font-size:12px; max-width: 445px;}
+
+/* Libraries */
+
+.lib-name {
+  background: url(/img/drop-arrow.png) no-repeat;
+  background-position: 39px 3px;
+  color: #c2950c;
+  text-decoration: underline ;
+  margin-left: -12px;
+}
+
+.grid-left-container .lib_sort-by ul li {
     display: inline;
     padding-left: 0px;
     padding-right: 25px;
@@ -306,37 +344,17 @@ li.lib-sortby {
   font-weight: normal !important;
 }
 
-
 .lib_sort-by {
   padding-left: 0px;
   padding-bottom: 15px;
   color: #6d6d6d;
 }
 
-.grid-libraries-container .lib_sort-by ul {
+.grid-left-container .lib_sort-by ul {
     margin: 0 0 0 0;
 }
 
-.sometimes-we-container {
-  display:inline;
-  float: right;
-  position: relative;
-  margin-left: 0px;
-  margin-right: 0px;
-  width: 290px;
-  margin-top: -356px;
-}
-
-.view-all-git {
-    margin-left: 16px;
-    font-family: Georgia;
-    font-style: italic;
-    font-weight: normal;
-}
-
-#recent1, #recent2 {
-    margin-left: 17px;
-}
+/* Projects */
 
 .projects-container {
     width: 290px;
@@ -362,7 +380,42 @@ li.lib-sortby {
     width: 100%;
 }
 
-div.header h1, div.grid-libraries-container h1, div.sometimes-we-container h1, div.projects-container h1 {
+/* Right container */
+
+.recently-updated {
+  display:inline;
+  float: right;
+  position: relative;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 290px;
+}
+
+#recent1, #recent2 {
+    margin-left: 17px;
+}
+
+.view-all-git {
+    margin-left: 16px;
+    font-family: Georgia;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.sometimes-we-container {
+  display:inline;
+  float: right;
+  clear: both;
+  position: relative;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 290px;
+  padding-top:40px;
+}
+
+/* Headers, zebra backgrounds, tags, and images */
+
+div.header h1, div.grid-left-container h1, div.sometimes-we-container h1, div.projects-container h1, .recently-updated h1 {
   font-weight: normal;
   font-style:normal;
   font-size: 200%;
@@ -382,40 +435,21 @@ ul.libraries-zebra > li:nth-of-type(even) {
   background-color: #f9f8f8;
 }
 
-
 ul.libraries-zebra {
   margin: 0 0 0 0;
 }
 
-li {padding-left: 20px;}
-.section img {float:left; margin-top:18px; margin-left:9px;}
-.textmiddle {vertical-align: middle;}
-.withTip-left {float: left;}
-.section p {margin: 0 0 0 0; clear:both; height:21px; padding-top: 9px; font-size:12px; max-width: 445px;}
-
-.lib-name {
-  background: url(/img/drop-arrow.png) no-repeat;
-  background-position: 39px 3px;
-  color: #c2950c;
-  text-decoration: underline ;
-  margin-left: -12px;
-}
-
-.git-button {
-    margin-top: -84px;
-    float:right;
-    margin-bottom: 36px;
-    padding-right: 10px;
-}
-
-.git-star {
-  float:right; margin-bottom: 4px;
-}
-.git-fork {float:right; clear:both;}
-}
-
-h5.morepages {margin-left: 0px}
-.more-expand { margin-left:250px; margin-top: 20px;}
+p.morepages {margin-left: 0px; font-weight: bold;}
+.more-expand { margin-left:250px; margin-top: 20px; width: 100px;}
 .more-underline {text-decoration:underline; clear:both; margin-bottom:1px; margin-left: 9px; margin-top: -2px; font-size:13px; color: #78bcc0;}
-.morearrow { float:left; margin-left: -2px;}
+.morearrow { float:left; margin-left: -2px; background: url(/img/morearrow.png) no-repeat; height: 19px; width: 63px;}
 
+.git-button {margin-top: -84px;float:right;margin-bottom: 36px;padding-right: 10px;}
+.git-star {float:right; margin-bottom: 4px;}
+.git-fork {float:right; clear:both;}
+
+.datacommons-box {height: 90px;}
+.blogtags-container {padding-bottom: 10px;}
+.blogtags ul li { margin: 0px 0px 0px 0px; padding-bottom: 20px; float: left;}
+ul.blogtags {margin: 0 0 0 0 !important;}
+.blogtags li { font-size: 85%; font-family: Georgia, 'Times New Roman', Times, serif; font-style: oblique; color: #97928f; display: inline; line-height: 21px; max-width: 680px; padding-left: 0px; padding-right: 2px; }
