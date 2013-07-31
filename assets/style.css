@@ -136,8 +136,13 @@ div.header h1 {
 .recently-updated-repos li span.time a,
 .recently-updated-repos li span.watchers a,
 .recently-updated-repos li span.forks a {
-  color: #e07c3e;
+  color: #97928f;
   text-decoration: none;
+}
+
+.recently-updated-repos li span.time a {
+  font-size: 12px;
+  clear: right;
 }
 
 li.repo {

@@ -304,13 +304,12 @@ div.title-projects h1 { font-weight: normal;
 
 .section { border-top: 1px dashed #D6D3D2;}
 
-
 div a:link, a:visited {
     text-decoration: underline;
 }
 
 div a:hover {
-    color: #b9a609;
+    color: #c2950c;
 }
 
 
@@ -426,6 +425,12 @@ li.lib-sortby {
   width: 290px;
   padding-top:40px;
 }
+
+#recent1 a:link, a:visited, #recent2 a:link, a:visited {
+  text-decoration: underline; color: #e07c3e;
+}
+
+.recently-updated-repos li span.time a {text-decoration: none !important; color: #97928f !important;}
 
 /* Headers, zebra backgrounds, tags, and images */
 
