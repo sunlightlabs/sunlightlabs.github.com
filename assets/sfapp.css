@@ -283,10 +283,8 @@ div.title-projects h1 { font-weight: normal;
   color: #584E4A;
   font-family: "prenton-condensed","Helvetica Neue","Helvetica","Arial",sans-serif;
   }
-}
 
-.title-projects p.sltag { font-family: Georgia, serif; font-size: 14px;font-style: italic;font-weight: normal;max-width: 940px;color: #949494;
-}
+.sl-subtitle { font-family: Georgia, serif; font-size: 14px;font-style: italic;font-weight: normal;max-width: 940px;color: #949494;}
 
 /* Main section */
 
@@ -302,43 +300,63 @@ div.title-projects h1 { font-weight: normal;
   padding-top: 0px;
   width: 300px;
   float: right;
-  margin-top: -1480px;
 }
 
 .section { border-top: 1px dashed #D6D3D2;}
 
 
 div a:link, a:visited {
-    color: #78bcc0;
     text-decoration: underline;
 }
 
 div a:hover {
-    color: #c2950c;
+    color: #b9a609;
 }
+
 
 li {padding-left: 20px;}
 .section img {float:left; margin-top:18px; margin-left:9px;}
 .textmiddle {vertical-align: middle;}
 .withTip-left {float: left;}
-.section p {margin: 0 0 0 0; clear:both; height:21px; padding-top: 9px; font-size:12px; max-width: 445px;}
+.section p {
+  margin: 0 0 0 0;
+  clear: both;
+  height: auto; 
+  padding-top: 9px; 
+  font-size:12px; 
+  max-width: 445px;
+}
 
 /* Libraries */
 
-.lib-name {
-  background: url(/img/drop-arrow.png) no-repeat;
-  background-position: 39px 3px;
-  color: #c2950c;
-  text-decoration: underline ;
-  margin-left: -12px;
+p.lib-sortby {float:left; padding-right:10px;}
+
+li.libraries {padding-bottom: 10px;}
 }
 
 .grid-left-container .lib_sort-by ul li {
     display: inline;
     padding-left: 0px;
     padding-right: 25px;
-    font-weight: bold;
 }
+
+.lib_sort-by ul li {display: inline; font-weight:bold;}
+
+
+.active {
+  background: url(/img/drop-arrow.png) no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+  color: #c2950c;
+  text-decoration: underline ;
+  margin-left: 0px;
+  font-weight:bold;
+  padding-right: 14px;
+  padding-left: 5px;
+}
+
+.unactive {padding-left:10px;}
+
 
 li.lib-sortby {
   font-weight: normal !important;
@@ -348,10 +366,6 @@ li.lib-sortby {
   padding-left: 0px;
   padding-bottom: 15px;
   color: #6d6d6d;
-}
-
-.grid-left-container .lib_sort-by ul {
-    margin: 0 0 0 0;
 }
 
 /* Projects */
@@ -373,7 +387,6 @@ li.lib-sortby {
 .title-projects h1, p {
     margin-left: 0;
     margin-right: 0;
-    height: 30px;
 }
 
 .title-projects {
@@ -389,6 +402,7 @@ li.lib-sortby {
   margin-left: 0px;
   margin-right: 0px;
   width: 290px;
+  padding-top: 46px;
 }
 
 #recent1, #recent2 {
@@ -444,11 +458,11 @@ p.morepages {margin-left: 0px; font-weight: bold;}
 .more-underline {text-decoration:underline; clear:both; margin-bottom:1px; margin-left: 9px; margin-top: -2px; font-size:13px; color: #78bcc0;}
 .morearrow { float:left; margin-left: -2px; background: url(/img/morearrow.png) no-repeat; height: 19px; width: 63px;}
 
-.git-button {margin-top: -84px;float:right;margin-bottom: 36px;padding-right: 10px;}
+.git-button {margin-top: 15px;float:left;padding-right: 10px;}
 .git-star {float:right; margin-bottom: 4px;}
 .git-fork {float:right; clear:both;}
 
-.datacommons-box {height: 90px;}
+.zebrasection-box {float:left; width:458px;}
 .blogtags-container {padding-bottom: 10px;}
 .blogtags ul li { margin: 0px 0px 0px 0px; padding-bottom: 20px; float: left;}
 ul.blogtags {margin: 0 0 0 0 !important;}

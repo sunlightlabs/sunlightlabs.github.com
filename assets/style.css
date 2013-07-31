@@ -105,6 +105,7 @@ div.header h1 {
 #recently-updated h1 a {
   font-weight: normal;
   font-size: 11px;
+  text-decoration: none;
 }
 
 .recently-updated-repos {
@@ -127,13 +128,16 @@ div.header h1 {
 
 .recently-updated-repos li span.name {
   padding: 0 6px 0 0;
-  font-size: 13px;
+  font-size: 16px;
+  margin-left: -33px;
+  font-weight: bold;
 }
 
 .recently-updated-repos li span.time a,
 .recently-updated-repos li span.watchers a,
 .recently-updated-repos li span.forks a {
-  color: #999;
+  color: #e07c3e;
+  text-decoration: none;
 }
 
 li.repo {
