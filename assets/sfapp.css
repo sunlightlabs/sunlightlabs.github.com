@@ -286,6 +286,7 @@ div.title-projects h1 { font-weight: normal;
   }
 
 .sl-subtitle { font-family: Georgia, serif; font-size: 14px;font-style: italic;font-weight: normal;max-width: 940px;color: #949494;}
+.sl-subtitle a:hover { color: #AD8B21!important;}
 
 /* Main section */
 
@@ -305,7 +306,7 @@ div.title-projects h1 { font-weight: normal;
 
 .section { border-top: 1px dashed #D6D3D2;}
 
-div a:link, a:visited {
+a:link, a:visited {
     text-decoration: underline;
 }
 
@@ -314,7 +315,7 @@ div a:hover {
 }
 
 
-li {padding-left: 20px;}
+li.libraries {padding-left: 20px;}
 .section img {float:left; margin-top:18px; margin-left:9px;}
 .textmiddle {vertical-align: middle;}
 .withTip-left {float: left;}
@@ -344,7 +345,7 @@ li.libraries {padding-bottom: 10px;}
 
 
 .active {
-  background: url(/img/drop-arrow.png) no-repeat;
+  background: url(../img/drop-arrow.png) no-repeat;
   background-position-x: right;
   background-position-y: bottom;
   color: #c2950c;
@@ -409,12 +410,24 @@ li.lib-sortby {
     margin-left: 17px;
 }
 
+.recently-updated-left {float:left;}
+.stars-forks-right {float:right; text-align:right;}
+.stars-forks-right a, .stars-forks-right a:active, .stars-forks-right a:visited {color:#9d9d9d; text-decoration: none;}
+.stars-forks-right a:hover {text-decoration: none; color:#787878;}
+.recently-updated-list {margin: 0 0 10px 0px; padding-left: 0;}
+.recently-updated-title {font-size: 16px; font-weight:bold;}
+.recently-updated-left a, .recently-updated-left a:active {color: #d2793f; text-decoration: none;}
+.recently-updated-left a:hover {color: #ca6429; text-decoration: none;}
+
 .view-all-git {
     margin-left: 16px;
     font-family: Georgia;
     font-style: italic;
-    font-weight: normal;
+    font-weight: normal;;
 }
+
+a.view-all-git {color: #abd3df !important; font-style: oblique; font-size:13px; font-family: Georgia; margin-left: 0px;}
+.view-all-git a:hover {color: #fff !important;}
 
 .sometimes-we-container {
   display:inline;
@@ -428,20 +441,21 @@ li.lib-sortby {
 }
 
 
-#recent1 a:link, a:visited, #recent2 a:link, a:visited {
+#recent1 a:link #recent2 a:link{
   text-decoration: underline; color: #e07c3e;
 }
 
-.sometimes-we-container a, a:active, a:visited { color: #c9a706; font-size:16px; font-weight:bold;}
+.sometimes-we-container a, a:active, a:visited { font-size:16px; font-weight:bold; text-decoration: underline;}
 ul.sometimes-we-list  {margin: 0 0 10px 0px !important; padding-left: 0;}
 .sometimes-we-container .sometimes-we-list ul {margin: 0 0 0 0;}
 .sometimes-we-list ul li  {padding-left: 0; padding-bottom:20px; padding-top:0px;}
-.sometimeswe-date {font-size: 13px; font-style: oblique;}
+.rightside-date {font-size: 13px; font-style: oblique; color:#97928f;}
 .sometimes-we-container a:hover { color: #AD8B21; }
-a.how-we {color: #abd3df; font-family: Georgia, serif; font-style: oblique; font-size: 13px; font-weight:normal;}
+a.right-container-link {color: #abd3df; font-family: Georgia, serif; font-style: oblique; font-size: 13px; font-weight:normal;}
 
 .recently-updated-repos li span.time a {text-decoration: none !important; color: #97928f !important;}
 
+.sometimes-title {color: #c9a706;;}
 /* Headers, zebra backgrounds, tags, and images */
 
 div.header h1, div.grid-left-container h1, div.sometimes-we-container h1, div.projects-container h1, .recently-updated h1 {
@@ -471,7 +485,7 @@ ul.libraries-zebra {
 p.morepages {margin-left: 0px; font-weight: bold;}
 .more-expand { margin-left:250px; margin-top: 20px; width: 100px;}
 .more-underline {text-decoration:underline; clear:both; margin-bottom:1px; margin-left: 9px; margin-top: -2px; font-size:13px; color: #78bcc0;}
-.morearrow { float:left; margin-left: -2px; background: url(/img/morearrow.png) no-repeat; height: 19px; width: 63px;}
+.morearrow { float:left; margin-left: -2px; background: url(../img/morearrow.png) no-repeat; height: 19px; width: 63px;}
 
 .git-button {margin-top: 15px;float:left;padding-right: 10px;}
 .git-star {float:right; margin-bottom: 4px;}
