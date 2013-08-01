@@ -268,11 +268,12 @@ input[type=checkbox] { width: 15px; }
 
 .clearfix-nav i { margin-top: 2px; padding-right: 5px;}
 .mainsf-nav { float: left; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px;; margin-top: -40px; margin-right:0; margin-left:0px;}
-.mainsf-nav li { border-left: 1px solid #a1bfb5; margin-right: 10px; padding-left: 10px; float: right; }
+.mainsf-nav li { border-right: 1px solid #a1bfb5; margin-left: 10px; padding-right: 10px; float: left; padding-left: 0;}
 .mainsf-nav .first { border: none; }
 .mainsf-nav a:link, .listNav a:active, .listNav a:visited { color: #76716E; padding-bottom: 2px;}
 .mainsf-nav a:hover { color: #c2950c; text-decoration: none;}
 .leaderboard {border: none !important; padding-left:0px !important;}
+.mainsf-nav li:first-of-type {margin-left: 0;}
 
 
 /* Sunlight Labs Github Projects */
@@ -426,9 +427,18 @@ li.lib-sortby {
   padding-top:40px;
 }
 
+
 #recent1 a:link, a:visited, #recent2 a:link, a:visited {
   text-decoration: underline; color: #e07c3e;
 }
+
+.sometimes-we-container a, a:active, a:visited { color: #c9a706; font-size:16px; font-weight:bold;}
+ul.sometimes-we-list  {margin: 0 0 10px 0px !important; padding-left: 0;}
+.sometimes-we-container .sometimes-we-list ul {margin: 0 0 0 0;}
+.sometimes-we-list ul li  {padding-left: 0; padding-bottom:20px; padding-top:0px;}
+.sometimeswe-date {font-size: 13px; font-style: oblique;}
+.sometimes-we-container a:hover { color: #AD8B21; }
+a.how-we {color: #abd3df; font-family: Georgia, serif; font-style: oblique; font-size: 13px; font-weight:normal;}
 
 .recently-updated-repos li span.time a {text-decoration: none !important; color: #97928f !important;}
 
