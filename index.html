@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="assets/grid.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link rel="stylesheet" type="text/css" href="assets/sfapp.css">
+    <link rel="stylesheet" type="text/css" href="assets/gh.css">
     <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
     <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="assets/strftime.js"></script>
@@ -14,13 +15,13 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
     <script type="text/javascript">
-    (function ($, undefined) {
 
+      var libraries = [];
+      var projects = [];
+      var all = [];
       // Put custom repo URL's in this object, keyed by repo name.
       var repoUrls = {
-        //"bootstrap": "http://twitter.github.com/bootstrap/",
-        //"finagle": "http://twitter.github.com/finagle/",
-        //"hogan.js": "http://twitter.github.com/hogan.js/"
+  
       };
 
       function repoUrl(repo) {
@@ -28,8 +29,7 @@
       }
 
       var repoDescriptions = {
-        //"bootstrap": "An HTML, CSS, and JS toolkit designed to kickstart development of webapps and sites",
-        //"naggati2": "A protocol builder for Netty using Scala 2.8"
+
       };
 
       function repoDescription(repo) {
@@ -65,35 +65,91 @@
           'capitolphone', 'door-android', 'elections', 'iodocs', 'datajam-datacard', 
           'dq_tester', 'batman' ];
 
+      var REPO_PROJECTS = [
+        'openstates', 'congress-ios', 'brisket', 'congress-web', 'scout', 'datacommons', 'politwoops',
+        'fcc_political_ads', 'congress-android', 'Capitol-Words','churnalism_us', 'corpid', 'churnalism-firefox', 
+        'clearspending', 'sitegeist-ios', 'calloncongress', 'churnalism_ie_setup', 'dryrub', 'sunlightlabs.github.com',
+        'sfm-chrome', 'sitegeist', 'TexLege', 'StatesLege', 'poligraft', 'sitegeist-android'];
+
+
       function addRecentlyUpdatedRepo(repo, classname) {
-        var $item = $("<li>");
 
-        var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
-        $item.append($("<span>").addClass("name").append($name));
-
-        var $time = $("<a>").attr("href", repo.html_url + "/commits").text(strftime("%h %e, %Y", repo.pushed_at));
-        $item.append($("<span>").addClass("time").append($time));
-
-        $item.append('<span class="bullet">&sdot;</span>');
-
-        var $watchers = $("<a>").attr("href", repo.html_url + "/watchers").text(repo.watchers + " stargazers");
-        $item.append($("<span>").addClass("watchers").append($watchers));
-
-        $item.append('<span class="bullet">&sdot;</span>');
-
-        var $forks = $("<a>").attr("href", repo.html_url + "/network").text(repo.forks + " forks");
-        $item.append($("<span>").addClass("forks").append($forks));
-
-        $item.appendTo(classname);
+        
+        var $ru_repo = $('<li><div class="recently-updated-left"><a class="recently-updated-title" href="'
+                      + repo.html_url 
+                      + '">' + repo.name 
+                      + '</a><p class="rightside-date">'
+                      +  strftime("%h %e, %Y", repo.pushed_at)
+                      + '</p></div><div class="stars-forks-right"><a href="'
+                      + repo.html_url + '/watchers">'
+                      + repo.watchers + ' stargazers</a><br/ ><a href="'
+                      + repo.html_url + '/network">'
+                      + repo.forks + ' forks</a></div><div class="clear"></div></li>');
+        $ru_repo.appendTo(classname);
       }
 
-      function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
-        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        $link.append($("<h2>").text(repo.name));
-        $link.append($("<h3>").text(repo.language));
-        $link.append($("<p>").text(repoDescription(repo)));
-        $item.appendTo("#repos");
+      function addRepo(repo, selector, num) {
+
+        var image_langs = ['python', 'ruby', 'php', 'javascript'];
+        if (repo.language == null || $.inArray(repo.language.toLowerCase(), image_langs) == -1){
+          var lang = 'other'
+        } else {
+          var lang = repo.language.toLowerCase();
+        }
+
+        if ( num >= 10) { var hidden = ' style="display:none;"'}
+        else { var hidden = ''; }
+
+        var $repo = $('<li class="section libraries"'+ hidden 
+                      +'><div class="zebrasection-box">'
+                      + '<h3 class="withTip"><a href="' + repoUrl(repo)
+                      + '">' + repo.name 
+                      + '</a></h3><img src="img/' + lang
+                      + '.png" /><p>'
+                      + repoDescription(repo)
+                      + '</p><ul class="blogtags"><li></li></ul>'
+                      + '</div><div class="git-button"><div class="git-star" id="git-star">'
+                      + '<span class="github-btn"><a class="gh-btn" href="'+ repo.html_url +'/watchers" target="_blank">'
+                      + '<span class="gh-ico"></span>'
+                      + '<span class="gh-text">Star</span></a>'
+                      + '<a class="gh-count" href="' + repo.html_url +'/watchers" target="_blank" style="display:block;">'+ repo.watchers +'</a></span>'
+                      + '</div><div class="git-fork" id="git-fork">'
+                      + '<span class="github-btn"><a class="gh-btn" href="' + repo.html_url + '/network" target="_blank">'
+                      + '<span class="gh-ico"></span>'
+                      + '<span class="gh-text">Fork</span></a>'
+                      + '<a class="gh-count" href="' + repo.html_url
+                      + '/network" target="_blank" style="display:block;">'+ repo.forks +'</a></span>'
+                      + '</div></div>'
+                      + '<div class="clear"></div></li>')
+        $repo.appendTo(selector);
+      }
+
+      function nameSort( a, b){
+        if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1;}
+        if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+        return 0;
+      }
+      function starSort( a, b){
+        if (a.watchers > b.watchers) { return -1;}
+        if (a.watchers < b.watchers) { return 1; }
+        return 0;
+      }
+      function forkSort( a, b){
+        if (a.forks > b.forks) { return -1;}
+        if (a.forks < b.forks) { return 1; }
+        return 0;
+      }
+
+      function langSort( a, b){
+        if (a.language > b.language) { return -1;}
+        if (a.language < b.language) { return 1; }
+        return 0;
+      }
+
+      function dateSort( a, b){
+        if (a.pushed_at > b.pushed_at) { return -1;}
+        if (a.pushed_at < b.pushed_at) { return 1; }
+        return 0;
       }
 
       function addRepos(repos, page) {
@@ -103,6 +159,7 @@
         var uri = "https://api.github.com/orgs/sunlightlabs/repos?callback=?"
                 + "&per_page=100"
                 + "&page="+page;
+               //+ "&access_token=";
 
         $.getJSON(uri, function (result) {
           if (result.data && result.data.length > 0) {
@@ -112,62 +169,46 @@
           else {
              $(function () {
 
-              // remove bad repos
-              var new_repos = [];
               for(var i=0; i < repos.length; ++i) {
+                repos[i].pushed_at = new Date(repos[i].pushed_at)
                 if($.inArray(repos[i].name, REPO_BLACKLIST) == -1) {
-                   new_repos.push(repos[i]);
+                  if($.inArray(repos[i].name, REPO_PROJECTS) > -1) {
+                    projects.push(repos[i]);
+                  }
+                  else {
+                    libraries.push(repos[i]);
+                  }
+                  all.push(repos[i]);
                 }
               }
-              repos = new_repos;
 
-              // Convert pushed_at to Date.
-              $.each(repos, function (i, repo) {
-                repo.pushed_at = new Date(repo.pushed_at);
+              $('#more-libraries').text("10 of " + libraries.length);
+              $('#more-projects').text("10 of " + projects.length);
 
-                var weekHalfLife  = 1.146 * Math.pow(10, -9);
+              libraries.sort(nameSort);
+              projects.sort(nameSort);
 
-                var pushDelta    = (new Date) - Date.parse(repo.pushed_at);
-                var createdDelta = (new Date) - Date.parse(repo.created_at);
-
-                var weightForPush = 1;
-                var weightForWatchers = 1.314 * Math.pow(10, 7);
-
-                repo.hotness = weightForPush * Math.pow(Math.E, -1 * weekHalfLife * pushDelta);
-                repo.hotness += weightForWatchers * repo.watchers / createdDelta;
+              $.each(libraries, function (i, repo) {
+                addRepo(repo, '#libraries', i);
               });
-
-              // Sort by highest # of watchers.
-              repos.sort(function (a, b) {
-                if (a.hotness < b.hotness) return 1;
-                if (b.hotness < a.hotness) return -1;
-                return 0;
-              });
-
-              $.each(repos, function (i, repo) {
-                addRepo(repo);
-              });
+              $.each(projects, function(i, repo){
+                addRepo(repo, '#projects', i);
+              })
 
               // Sort by most-recently pushed to.
-              repos.sort(function (a, b) {
-                if (a.pushed_at < b.pushed_at) return 1;
-                if (b.pushed_at < a.pushed_at) return -1;
-                return 0;
-              });
+              all.sort(dateSort);
 
-              $.each(repos.slice(0, 3), function (i, repo) {
-                addRecentlyUpdatedRepo(repo, "#recent1");
+              $.each(all.slice(0, 6), function (i, repo) {
+                addRecentlyUpdatedRepo(repo, ".recently-updated-list");
               });
-              $.each(repos.slice(3, 6), function (i, repo) {
-                addRecentlyUpdatedRepo(repo, "#recent2");
-                });
+          
               $('#spinner').remove();
             });
           }
         });
       }
       addRepos();
-    })(jQuery);
+
     </script>
   </head>
 
@@ -184,19 +225,17 @@
 
       <nav class="clearfix-nav">
         <ul class="mainsf-nav">
-          <li class="nav-overview"><a href="/overview/">Overview</a></li>
-          <li class="nav-query"><a href="/querybuilder/">Query Builder</a></li>
-          <li class="nav-community"><a href="/community/">Community</a></li>
-          <li class="nav-events"><a href="/events/">Events</a></li>
-          <li class="nav-analytics"><a href="/analytics/">Analytics</a></li>
-          <li class="keys"><a href="/keys/">Keys</a></li>
-          <li class="leaderboard"><a href="/leaderboard/">Leaderboard</a></li>
+          <li class="nav-overview"><a href="http://sunlightfoundation.com/api/">Overview</a></li>
+          <li class="nav-query"><a href="http://tryit.sunlightfoundation.com/congress">Query Builder</a></li>
+          <li class="nav-community"><a href="http://sunlightfoundation.com/api/community/">Community</a></li>
+          <li class="nav-events"><a href="http://sunlightfoundation.com/api/events/">Events</a></li>
+          <li class="leaderboard"><a href="http://sunlightfoundation.com/api/usage/">API Gallery</a></li>
         </ul>
       </nav>
 
     <div class="title-projects">
       <h1>Sunlight Labs Github Projects</h1>
-      <p class="sl-subtitle">All of our projects are Open Source. Some older/deprecated projects are hidden. You can <a href="">view all of them</a> on GitHub.
+      <p class="sl-subtitle">All of our projects are Open Source. Some older/deprecated projects are hidden. You can <a href="https://github.com/sunlightlabs/repositories">view all of them</a> on GitHub.
       </p>
     </div>
 
@@ -214,151 +253,11 @@
       </div>
 
 <!-- BEGINNING OF LIBRARIES -->
-        <ul class="libraries-zebra">
+        <ul class="libraries-zebra" id="libraries">
 
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">datacommons</a></h3>
-            <img style="vertical-align:middle" src="../img/python.png">
-            <p>The core of sunlightlabs' Data Commons project. Includes the Transparency Data site and the APIs that power TransparencyData.com and InfluenceExplorer.com </p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-              <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=datacommons&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-              <div class-"git-fork">
-              <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=datacommons&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-          <div class="clear"></div>
-          </li>
-
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">congress</a></h3>
-            <img style="vertical-align:middle" src="../img/ruby.png">
-            <p>RESTful API over the artifacts of Congress</p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-              <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=congress&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-              <div class-"git-fork">
-              <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=congress&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </li>
-
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">openstates</a></h3>
-            <img style="vertical-align:middle" src="img/python.png">
-            <p>source for Open States' scrapers</p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-                <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=openstates&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-                <div class-"git-fork">
-                <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=openstates&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </li>
-
-
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">sfapp</a></h3>
-            <img style="vertical-align:middle" src="img/js.png">
-            <p>django utilities for shared api authentication & log aggregation</p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-              <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=sfapp&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-              <div class-"git-fork">
-              <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=sfapp&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </li>
-
-
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">scout</a></h3>
-            <img style="vertical-align:middle" src="img/python.png">
-            <p>Government-wide search and notification website</p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-               <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=scout&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-              <div class-"git-fork">
-              <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=scout&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </li>
-
-
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">geocoder</a></h3>
-            <img style="vertical-align:middle" src="img/ruby.png">
-            <p>RESTful API over the artifacts of Congress</p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-              <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=congress&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-              <div class-"git-fork">
-              <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=congress&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </li>
-
+        </ul>
       <div class="more-expand">
-      <p class="morepages">10 of 75</p>
+      <p class="morepages" id="more-libraries">10 of </p>
       <p class="more-underline">More</p>
       <a href="#" class="morearrow"></a>
       </div>
@@ -372,104 +271,12 @@
     <div class="projects-container">
       <h1>Projects</h1>
       <div class="Projects-list">
-      <ul class="libraries-zebra">
+      <ul class="libraries-zebra" id="projects">
 
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">datacommons</a></h3>
-            <img style="vertical-align:middle" src="img/python.png">
-            <p>The core of sunlightlabs' Data Commons project. Includes the Transparency Data site and the APIs that power TransparencyData.com and InfluenceExplorer.com </p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-              <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=datacommons&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-              <div class-"git-fork">
-              <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=datacommons&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-          <div class="clear"></div>
-          </li>
-
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">openstates</a></h3>
-            <img style="vertical-align:middle" src="img/python.png">
-            <p>RESTful API over the artifacts of Congress</p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-                <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=congress&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-                <div class-"git-fork">
-                <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=congress&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </li>
-
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">clearspending</a></h3>
-            <img style="vertical-align:middle" src="img/python.png">
-            <p>We've taken data from other federal reporting systems and compared it with just the grants data found in USASpending.gov across three categories: Consistency, Completeness and Timeliness.</p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-                 <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=clearspending&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-                <div class-"git-fork">
-                <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=clearspending&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </li>
-
-          <li class="section libraries">
-            <div class="zebrasection-box">
-            <h3 class="withTip"><a href="/poliwoops/">one80</a></h3>
-            <img style="vertical-align:middle" src="img/python.png">
-            <p>180 Project flips the cameras at congressional committee hearings and shows you the audience</p>
-                <ul class="blogtags">
-                  <li>influence,</li>
-                  <li>lobbying,</li>
-                  <li>contracts,</li>
-                  <li>money in politics</li>
-                </ul>
-            </div>
-
-            <div class="git-button">
-              <div class="git-star">
-                <iframe class="git-star" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=one80&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe></div>
-                <div class-"git-fork">
-                <iframe class="git-fork" src="http://ghbtns.com/github-btn.html?user=sunlightlabs&repo=one80&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </li>
-      
       </ul>  
 
     <div class="more-expand"> 
-      <p class="morepages">10 of 75</p>
+      <p class="morepages" id="more-projects">10 of </p>
       <p class="more-underline">More</p>
       <a href="#" class="morearrow"></a>
     </div>
@@ -483,86 +290,10 @@
 
 
       <div class="grid-right-container"> 
-<!-- 
-        <div class="recently-updated">
-            <h1><img id="spinner" src="assets/spinner.gif">Recently updated</h1>
-            <ol id="recent1" class="recently-updated-repos"></ol>
-            <ol id="recent2" class="recently-updated-repos"></ol>
-            <a class="view-all-git" href="https://github.com/sunlightlabs/repositories">View All on GitHub</a>
-        </div> -->
-
         <div class="recently-updated">
             <h1><img id="spinner" src="assets/spinner.gif">Recently updated</h1>
             <ul class="recently-updated-list">
-              <li>
-                <div class="recently-updated-left">
-                  <a href="" class="recently-updated-title">poliwoops</a>
-                  <p class="rightside-date">Jun. 18, 2013</p>
-                </div>
-                <div class="stars-forks-right">
-                  <a href="">6 stargazers</a><br>
-                  <a href="">8 forks</a>
-                </div>
-              </li>
-              <div class="clear"></div>
-              <li>
-                <div class="recently-updated-left">
-                  <a href="" class="recently-updated-title">congress</a>
-                  <p class="rightside-date">Jun. 18, 2013</p>
-                </div>
-                <div class="stars-forks-right">
-                  <a href="">27 stargazers</a><br>
-                  <a href="">5 forks</a>
-                </div>
-              </li>
-              <div class="clear"></div>
-              <li>
-                <div class="recently-updated-left">
-                  <a href="" class="recently-updated-title">scout</a>
-                  <p class="rightside-date">Jun. 18, 2013</p>
-                </div>
-                <div class="stars-forks-right">
-                  <a href="">27 stargazers</a><br>
-                  <a href="">5 forks</a>
-                </div>
-              </li>
-              <div class="clear"></div>              
-              <li>
-                <div class="recently-updated-left">
-                  <a href="" class="recently-updated-title">fcc_political_ads</a>
-                  <p class="rightside-date">Jun. 18, 2013</p>
-                </div>
-                <div class="stars-forks-right">
-                  <a href="">18 stargazers</a><br>
-                  <a href="">0 forks</a>
-                </div>
-              </li>
-              <div class="clear"></div>
-              <li>
-                <div class="recently-updated-left">
-                  <a href="" class="recently-updated-title">django-sunlightauth</a>
-                  <p class="rightside-date">Jun. 18, 2013</p>
-                </div>
-                <div class="stars-forks-right">
-                  <a href="">1 stargazers</a><br>
-                  <a href="">0 forks</a>
-                </div>
-              </li>
-              <div class="clear"></div>
-              <li>
-                <div class="recently-updated-left">
-                  <a href="" class="recently-updated-title">datacommons</a>
-                  <p class="rightside-date">Jun. 18, 2013</p>
-                </div>
-                <div class="stars-forks-right">
-                  <a href="">23 stargazers</a><br>
-                  <a href="">1 forks</a>
-                </div>
-              </li>
-              <div class="clear"></div>
-
             </ul>
-
             <a class="right-container-link" href="https://github.com/sunlightlabs/repositories">View All on GitHub</a>
         </div>
 
@@ -571,14 +302,19 @@
           <div class="sometimes-we-list">
             <ul>
               <li>
-                <a href="" class="sometimes-title">Door-django</a>
-                <p class="rightside-date">Feb. 14, 2013</p>
-                <a href="" class="right-container-link">How we used it</a>
+                <a href="https://github.com/sunlightlabs/door-django" class="sometimes-title">Doorkey</a>
+                <p class="rightside-date">Feb. 16, 2010</p>
+                <a href="http://sunlightfoundation.com/blog/2010/02/16/our-door-opener-science-project/" class="right-container-link">How we used it</a>
               </li>
               <li>
-                <a href="" class="sometimes-title">cleanosaurusrex</a>
-                <p class="rightside-date">Feb. 14, 2013</p>
-                <a href="" class="right-container-link">How we used it</a>
+                <a href="https://github.com/sunlightlabs/cleanosaurusrex" class="sometimes-title">Rex the Cleanosaur</a>
+                <p class="rightside-date">Oct. 11, 2011</p>
+                <a href="http://sunlightfoundation.com/blog/2011/10/11/labs-olympics-cleanosaurusrex/" class="right-container-link">How we used it</a>
+              </li>
+              <li>
+                <a href="https://github.com/sunlightlabs/vigo" class="sometimes-title">Vigo the Carpathian</a>
+                <p class="rightside-date">Oct. 26, 2011</p>
+                <a href="http://sunlightfoundation.com/blog/2011/10/26/a-very-vigo-halloween/" class="right-container-link">How we used it</a>
               </li>
           </div>
 
@@ -617,6 +353,51 @@
       </div>
     </div>
 <!-- FOOTER ENDS -->
+  <script type="text/javascript">
+    var add_click = function(name){
+        $("#more-"+name).siblings().click(function(e){
+              items = $('ul#'+name+' li[style="display:none;"]')
+              var counter = 0;
+              for( lib in items) {
+                if(lib < 10) { 
+                  counter = parseInt(lib) + 1
+                  $(items[lib]).show();
+                } else { break; }
+              }
+              old_nums = $("#more-"+name).text().split(' of ');
+              old_nums[0] = parseInt(old_nums[0]) + parseInt(counter);
+              $("#more-"+name).text(old_nums.join(' of '));
+              return false;
+          });
+      }
+    add_click('projects');
+    add_click('libraries');
 
+    var add_sort = function(sort, classname) {
+        $('li.'+classname).click(function(e){
+            $('div.lib_sort-by').find('li').removeClass('active').addClass('unactive')
+            $(this).addClass('active').removeClass('unactive')
+
+            libraries.sort(sort);
+            projects.sort(sort);
+            console.log(projects);
+
+            $('#libraries li').remove();
+            $('#projects li').remove();
+
+            $.each(libraries, function (i, repo) {
+              addRepo(repo, '#libraries', i);
+            });
+            $.each(projects, function(i, repo){
+              addRepo(repo, '#projects', i);
+            })
+        });
+      }
+    add_sort(nameSort, 'lib-name');
+    add_sort(forkSort, 'lib-forks');
+    add_sort(starSort, 'lib-stars');
+    add_sort(langSort, 'lib-lang');
+
+  </script>
   </body>
 </html>
